@@ -58,8 +58,39 @@
               }
             }
           }
+        },
+        "post": {
+          "summary": "Create a new joke",
+          "requestBody": {
+            "required": true,
+            "description": "Enter the joke details",
+            "content": {
+              "application/json": {
+                "example": {
+                  "blague": "Quelle est la femelle du hamster ?",
+                  "reponse": "L'Amsterdam"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Joke was created successfully",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "result": { 
+                      "success": "Joke is created"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-    },
+        
+      },
+    
       "/api/v1/blague!{id}": {
         "get": {
           "summary": "Get joke by ID",
@@ -113,6 +144,7 @@
           
         }
       },
+      
       "/api/v1/blague/random": {
         "get": {
           "summary": "Get a random joke",
