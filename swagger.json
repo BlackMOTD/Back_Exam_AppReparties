@@ -1,0 +1,161 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Joke API",
+      "version": "1.0.0",
+      "description": "API for joke"
+    },
+    "paths": {
+      "/api/v1/": {
+        "get": {
+          "summary": "Receive a welcome message with GET",
+          "responses": {
+            "200": {
+              "description": "Welcome message",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "success": "Welcome to API in GET!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Receive a welcome message with POST",
+          "responses": {
+            "200": {
+              "description": "Welcome message",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "success": "Welcome to API in POST!"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/blague": {
+        "get": {
+          "summary": "Get all joke",
+          "responses": {
+            "200": {
+              "description": "List of joke, and the all the joke in the database (here is an example of a joke)",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "result": { 
+                      
+                          "id": 1,
+                          "blague": "Quelle est la femelle du hamster ?",
+                          "reponse": "L'Amsterdam"
+                  }
+                  }
+                }
+              }
+            }
+          }
+        }
+    },
+      "/api/v1/blague!{id}": {
+        "get": {
+          "summary": "Get joke by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the joke to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Joke find",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "result": { 
+                        "id": 1,
+                        "blague": "Quelle est la femelle du hamster ?",
+                        "reponse": "L'Amsterdam"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid request",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "error": "Don't use text for id"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "error": "ID not found ..."
+                  }
+                }
+              }
+            }
+          }
+          
+        }
+      },
+      "/api/v1/blague/random": {
+        "get": {
+          "summary": "Get a random joke",
+          "responses": {
+            "200": {
+              "description": "Random joke data",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "result":
+                    {
+                        "id": 9,
+                        "blague": "Quel est le sport le plus silencieux ?",
+                        "reponse": "Le para-chuuuuuuuuuuuuuut"
+                  }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Data Schema Music ": {
+          
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "blague": {
+                "type": "string"
+              },
+              "reponse": {
+                "type": "string"
+              }
+            },
+            "required": ["id", "blague", "reponse"]
+          }
+          
+        }
+      }
+    }
+  
