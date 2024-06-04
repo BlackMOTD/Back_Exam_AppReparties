@@ -12,6 +12,8 @@ router.post('/', (req, res) => {
 
 router.get('/blague', controllerBlague.allBlague)
 
+router.post('/blague', controllerBlague.create);
+
 router.get('/blague!:id', controllerBlague.findById);
 
 router.get('/blague/random', controllerBlague.random);
